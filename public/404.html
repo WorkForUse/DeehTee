@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your App Title</title>
+    <script type="text/javascript">
+      // Single Page Apps for GitHub Pages
+      // MIT License
+      // https://github.com/rafgraph/spa-github-pages
+      // This script checks if a redirect is needed and redirects to the correct path
+      // when a 404 error occurs on a subpath.
+      (function () {
+        const redirect = sessionStorage.getItem('redirect');
+        if (redirect) {
+          sessionStorage.removeItem('redirect');
+          history.replaceState(null, null, redirect);
+        }
+        const path = window.location.pathname.split('/');
+        const base = `/${path[1]}/`; // Adjust 'path[1]' to your repository name index
+        const repo = 'DeehTee'; // Replace with your repository name
+
+        if (path[1] !== repo) {
+          sessionStorage.setItem('redirect', window.location.pathname);
+          window.location.replace(`<span class="math-inline">\{base\}</span>{repo}/`);
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
