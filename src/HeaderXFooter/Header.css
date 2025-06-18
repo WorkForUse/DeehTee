@@ -1,0 +1,122 @@
+/* Header.css */
+
+.sideStck {
+  background-color: #1a191e;
+  width: 250px;
+  min-height: 100vh;
+  padding: 0;
+  overflow-y: auto;
+  transition: transform 0.3s ease-in-out;
+  z-index: 100;
+
+  /* For large screens, make it fixed */
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh; /* Occupy full viewport height */
+
+  display: flex;
+  flex-direction: column;
+  /* Adjust internal spacing of sidebar content if needed to match 'demo.jpg' */
+  /* Remove justify-content: space-between if you want closer spacing */
+  /* If you want spacing like "demo.jpg", remove justify-content: space-between
+     and add padding-bottom to the last nav item or a margin-top to social icons */
+}
+
+/* Hide toggle by default for large screens */
+.sidebar-toggle {
+  display: none; /* Hidden by default on large screens */
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 999;
+  padding: 15px;
+}
+
+/* Styles for navigation links */
+.sideStck nav {
+  flex-grow: 1; /* Allow navigation to take up available space */
+}
+
+.sideStck nav ul {
+  list-style: none;
+  padding: 20px 0; /* Padding around the entire nav list */
+  margin: 0;
+}
+
+.sideStck nav ul li {
+  padding: 10px 20px; /* Padding for individual list items */
+  font-size: 1.2rem; /* Adjusted font size */
+  font-weight: bold; /* Original font weight */
+}
+
+.sideStck nav ul li a {
+  color: #f5f5f5; /* Link color */
+  text-decoration: none;
+  display: block; /* Make the whole list item clickable */
+}
+
+.sideStck .social-icons {
+  padding: 20px; /* Padding for social icons */
+  display: flex;
+  gap: 15px; /* Adjust gap for social icons */
+  font-size: 1.5rem; /* Adjust social icon size */
+  color: #f5f5f5; /* Social icon color */
+}
+
+/* Adjustments for the Die Heart title */
+.sideStck .sidebar-title {
+  padding: 20px 20px 10px 20px; /* Padding for the title */
+  font-size: 1.5rem; /* Adjust font size */
+  color: #f5f5f5;
+  /* Removed border-bottom to match demo.jpg which doesn't have it */
+  text-align: center;
+}
+
+/* ========== MEDIA QUERIES ========== */
+
+/* Large screens (min-width: 993px) */
+@media (min-width: 993px) {
+  .sideStck {
+    transform: translateX(0); /* Ensure it's visible */
+    /* position: fixed; and other base properties are already defined above, no need to redefine */
+  }
+
+  .hamburger-header {
+    display: none; /* Hide hamburger header on large screens */
+  }
+}
+
+/* Small screens (max-width: 992px) */
+@media (max-width: 992px) {
+  .sideStck {
+    /* Base properties like position: fixed, top, left, height, width are already defined */
+    transform: translateX(-100%); /* Hidden by default for slide-out effect */
+    /* Remove padding-bottom: 60px; if it was there as the hamburger-header handles the push */
+  }
+
+  .sideStck.active {
+    transform: translateX(0); /* Visible when active */
+  }
+
+  .hamburger-header {
+    display: flex; /* Show hamburger header */
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px 15px;
+    background-color: #1a191e; /* Match sidebar background */
+    color: white;
+    position: fixed; /* Fix header at the top */
+    width: 100%; /* Full width */
+    top: 0;
+    left: 0;
+    z-index: 101; /* Above sidebar */
+  }
+
+  .sidebar-toggle {
+    display: block; /* Show toggle button */
+    padding: 0;
+  }
+}

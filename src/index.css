@@ -1,0 +1,163 @@
+/* index.css */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global base styles */
+body, html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: #282c34; /* Keeping consistent background color */
+  color: #f5f5f5;
+  font-family: 'Barlow Condensed', sans-serif;
+  overflow-x: hidden;
+  height: 100%; /* Ensure html and body take full height */
+}
+
+/* New: Flexbox container for main layout on large screens */
+.main-layout-wrapper {
+  display: flex; /* Use flexbox */
+  min-height: 100vh; /* Ensure it takes at least full viewport height */
+}
+
+.content-area {
+  flex-grow: 1; /* Allows this area to take up all available horizontal space */
+  display: flex; /* Makes its children (Outlet, Footer) stack vertically */
+  flex-direction: column;
+  min-width: 0; /* Important for flex items to prevent overflow issues */
+
+  /* IMPORTANT CHANGE HERE: Apply padding-left only */
+  /* The padding-right will come from the internal content's padding */
+  /* padding-left: 5px; */
+  padding-right: 0; /* Ensure no extra padding on the right side of content-area */
+  padding-top: 0; /* Ensure no extra padding on top of content-area */
+  padding-bottom: 0; /* Ensure no extra padding on bottom of content-area */
+}
+
+/* Text color utility */
+.text_desc {
+  color: #77787b;
+}
+
+/* Form layout - assuming these are for other parts of your site */
+.name_identity,
+.email_identity {
+  flex-direction: column;
+  gap: 10px;
+}
+
+.few_lines,
+.few_lines-2,
+.few_lines-3,
+.few_lines-4 {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* ========== RESPONSIVE ========== */
+
+/* Large to medium (applies from 1200px down to 993px) */
+@media (max-width: 1200px) {
+  .footerstyle,
+  .aboutPagestyling,
+  .p_three {
+    /* Padding for content within the content-area */
+    padding: 40px 60px 10px 60px; /* This padding provides internal spacing for your page content */
+  }
+
+  .footerstyle {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .formContact {
+    margin: 50px 150px; /* This margin seems for horizontal centering within content-area */
+  }
+}
+
+/* Tablet (Max 992px - this is where the layout changes significantly for sidebar) */
+@media (max-width: 992px) {
+  /* Revert main layout to block for small screens (sidebar slides out) */
+  .main-layout-wrapper {
+    display: block;
+  }
+
+  /* Remove padding from content-area as sidebar slides over */
+  .content-area {
+    padding: 0; /* Reset all padding for small screens */
+  }
+
+  body {
+    padding-top: 60px; /* Space for the fixed hamburger header */
+  }
+
+  /* These are for main content when sidebar is not fixed on the side */
+  .footerstyle,
+  .aboutPagestyling,
+  .p_three {
+    margin-left: 0;
+    padding: 30px 40px 10px 40px; /* Adjusted padding for smaller screens */
+  }
+
+  .formContact {
+    margin: 30px 80px;
+  }
+
+  .homepage-wrapper {
+    margin-left: 0 !important;
+    padding: 20px;
+  }
+}
+
+/* Mobile (Max 768px) */
+@media (max-width: 768px) {
+  .footerstyle,
+  .aboutPagestyling,
+  .p_three,
+  .formContact {
+    margin: 0;
+    padding: 20px;
+  }
+
+  .homepage-wrapper {
+    margin-left: 0 !important;
+    padding: 20px;
+  }
+
+  .image\\&title_data, /* Escaping the ampersand */
+  .body_data {
+    flex-direction: column;
+  }
+
+  .abjusting {
+    font-size: 100px;
+    left: 20%;
+    top: 5%;
+  }
+}
+
+/* Extra small (Max 576px) */
+@media (max-width: 576px) {
+  .FS_title {
+    font-size: 2rem;
+  }
+
+  .FC_style input,
+  .FC_style textarea {
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  .FC_style button {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+
+  .abjusting {
+    font-size: 70px;
+    left: 10%;
+    top: 5%;
+  }
+}
